@@ -12,6 +12,17 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+  static Route<dynamic> route({String? title}) {
+    return MaterialPageRoute(
+        builder: (_) => MyHomePage(
+              title: title!,
+            ),
+        settings: RouteSettings(
+            name: MyHomePage(
+          title: title!,
+        ).toStringShort()));
+  }
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -166,6 +177,8 @@ class _LoginFormState extends State<LoginForm> {
 
   void _submit() {
     _loginBloc.login();
+
+    Navigator.push(context, MyHomePage.route(title: 'LOGIN'));
 
     print('got here');
   }
