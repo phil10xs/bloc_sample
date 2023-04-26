@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: any
   equatable: any
   loading_overlay: any
+ 
 
 
 dev_dependencies:

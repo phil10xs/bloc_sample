@@ -14,8 +14,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       if (event is FetchCurrentUserInfoEvent) {
         showState(FetchingCurrentUserInfo());
         var user = await _userService.getCurrentUser();
-        log('xx ${user.toJson()}');
-
         showState(SaveCurrentUserInfo(user: user));
       }
     });

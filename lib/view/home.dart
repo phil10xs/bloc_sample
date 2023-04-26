@@ -1,7 +1,6 @@
 import 'package:bloc_example/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loading_overlay/loading_overlay.dart';
 
 import '../bloc/user_bloc/user_bloc_event.dart';
 import '../bloc/user_bloc/user_bloc_state.dart';
@@ -16,18 +15,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  final _bloc = UserBloc();
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 0)).then((value) {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
       BlocProvider.of<UserBloc>(context).add(UserEvent());
       BlocProvider.of<UserBloc>(context).add(FetchCurrentUserInfoEvent());
     });
@@ -49,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text('Welcome to Apexive'),
                   Text('Name: ${user!.firstName}'),
                   Text('Email: ${user.email}'),
                 ],
